@@ -1,0 +1,6 @@
+detection_id,timestamp,sensor,lat,lon,alt_m,velocity_mps,heading_deg,raw_class,confidence,spectrum_anomaly,is_potential_threat
+OBS-0001,2026-11-05T18:00:01Z,POLLEN-SWARM-01,38.9075,-77.0365,45.2,12.4,85,uas,0.91,false,true
+OBS-0002,2026-11-05T18:00:02Z,NEMESIS-FPV-03,38.9076,-77.0364,48.1,11.8,88,uas,0.87,false,true
+OBS-0003,2026-11-05T18:00:03Z,CAMERA-NORTH-GATE,38.9074,-77.0366,2.0,0.5,90,uas,0.78,false,true
+OBS-0004,2026-11-05T18:00:04Z,EON-WEARABLE-07,38.9080,-77.0370,1.5,1.2,120,person,0.82,true,false
+OBS-0005,2026-11-05T18:00:05Z,DAEMON-WARDEN-01,38.9077,-77.0363,52.0,13.1,82,uas,0.93,false,true

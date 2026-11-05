@@ -1,0 +1,2 @@
+{"detection_id": "JL-001", "sensor": "POLLEN-SWARM-02", "lat": 38.9101, "lon": -77.0402, "alt_m": 72.0, "velocity_mps": 18.5, "heading_deg": 145, "raw_class": "uas", "confidence": 0.94, "spectrum_anomaly": false, "is_potential_threat": true}
+{"detection_id": "JL-002", "sensor": "NEMESIS-FPV-01", "lat": 38.9103, "lon": -77.0400, "alt_m": 70.5, "velocity_mps": 17.9, "heading_deg": 148, "raw_class": "uas", "confidence": 0.89, "spectrum_anomaly": false, "is_potential_threat": true}
