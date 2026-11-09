@@ -3,6 +3,16 @@ import csv, json
 from pathlib import Path
 from typing import List, Dict, Any
 from datetime import datetime
+from argus.settings import geo_routing_enabled
+
+
+def _copy_endpoint(obs: Dict[str, Any], row: Dict[str, Any]) -> None:
+    ip = row.get("ip") or row.get("src_ip") or ""
+    domain = row.get("domain") or row.get("host") or ""
+    if isinstance(ip, str) and ip.strip():
+        obs["ip"] = ip.strip()
+    if isinstance(domain, str) and domain.strip():
+        obs["domain"] = domain.strip()
 
 class DatasetLoader:
     def load(self, path: str) -> List[Dict[str, Any]]:
@@ -11,6 +21,7 @@ class DatasetLoader:
 class CSVObservationLoader(DatasetLoader):
     def load(self, path: str) -> List[Dict[str, Any]]:
         observations = []
+        include_endpoint = geo_routing_enabled()
         with open(path, newline="", encoding="utf-8") as f:
             for i, row in enumerate(csv.DictReader(f)):
                 obs = {
@@ -25,6 +36,8 @@ class CSVObservationLoader(DatasetLoader):
                     "spectrum_anomaly": str(row.get("spectrum_anomaly", "false")).lower() in ("true", "1", "yes"),
                     "is_potential_threat": str(row.get("is_potential_threat", "false")).lower() in ("true", "1", "yes"),
                 }
+                if include_endpoint:
+                    _copy_endpoint(obs, row)
                 observations.append(obs)
         return observations
 

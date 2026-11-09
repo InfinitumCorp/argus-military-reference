@@ -17,6 +17,21 @@ python main.py datasets/sample_observations.csv
 
 Open `cop.html` in a browser after running.
 
+## Cyber geo routing
+
+Off by default. Picture output stays the same while the switch is off.
+`geoip.dat` and `geosite.dat` are downloaded from pinned v2fly releases into
+`data/geo/` and are not committed.
+
+```bash
+python3 scripts/fetch_geo_dat.py
+python3 main.py --geo-routing on
+python3 main.py --show-settings
+```
+
+`INFINITUM_GEO_ENABLED=on` or `off` overrides the saved switch for that process.
+The saved switch is `argus_settings.json` (`geo_routing`).
+
 All defensive recommendations remain advisory.
 Mission data stays on the private Firmament path.
 

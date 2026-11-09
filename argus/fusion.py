@@ -6,6 +6,7 @@ from argus.tracker import MultiObjectTracker
 from argus.spectrum import SpectrumFusion
 from argus.anticipation import AnticipationEngine
 from argus.detector import Detector, SimulatedDetector
+from argus.geo_policy import apply_geo_policy
 
 class ArgusFusionEngine:
     def __init__(self, detector: Detector = None):
@@ -39,6 +40,7 @@ class ArgusFusionEngine:
             "notes": "Human-commanded. Recommendations are advisory. Private Firmament provenance.",
         }
         picture["forecasts"] = self.anticipation.forecast(picture)
+        apply_geo_policy(picture, raw_observations)
         return picture
 
     def _create_defense_alert(self, track):
