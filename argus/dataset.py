@@ -13,10 +13,13 @@ class CSVObservationLoader(DatasetLoader):
         observations = []
         with open(path, newline="", encoding="utf-8") as f:
             for i, row in enumerate(csv.DictReader(f)):
+                timestamp = row.get("timestamp")
+                if timestamp is None:
+                    timestamp = datetime.utcnow().isoformat()
                 obs = {
                     "detection_id": row.get("detection_id", f"CSV-{i:05d}"),
                     "sensor": row.get("sensor", "UNKNOWN"),
-                    "timestamp": row.get("timestamp", datetime.utcnow().isoformat()),
+                    "timestamp": timestamp,
                     "lat": float(row.get("lat", 0)), "lon": float(row.get("lon", 0)),
                     "alt_m": float(row.get("alt_m", 0)), "velocity_mps": float(row.get("velocity_mps", 0)),
                     "heading_deg": float(row.get("heading_deg", 0)),
@@ -25,6 +28,12 @@ class CSVObservationLoader(DatasetLoader):
                     "spectrum_anomaly": str(row.get("spectrum_anomaly", "false")).lower() in ("true", "1", "yes"),
                     "is_potential_threat": str(row.get("is_potential_threat", "false")).lower() in ("true", "1", "yes"),
                 }
+                source_ip = (row.get("source_ip") or "").strip()
+                domain = (row.get("domain") or "").strip()
+                if source_ip:
+                    obs["source_ip"] = source_ip
+                if domain:
+                    obs["domain"] = domain
                 observations.append(obs)
         return observations
 

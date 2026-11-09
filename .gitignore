@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# Fetched v2fly geoip.dat and geosite.dat. Never commit these binaries.
+data/geo/

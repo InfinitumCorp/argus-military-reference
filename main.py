@@ -65,6 +65,10 @@ def run_pipeline(raw_observations, source_name: str):
     result = q.ask("What UAS are in the picture?", final_picture)
     print(f"Query: {result['answer']}")
     print()
+    cyber_geo = final_picture.get("cyber_geo")
+    if cyber_geo:
+        print(f"Cyber geo annotations: {len(cyber_geo.get('observables', []))}")
+        print()
     print("v0.6 complete. Streaming processing and COP visualization active.")
     print("All recommendations remain advisory.")
     print("=" * 76)
