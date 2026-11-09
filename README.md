@@ -19,3 +19,8 @@ Open `cop.html` in a browser after running.
 
 All defensive recommendations remain advisory.
 Mission data stays on the private Firmament path.
+
+## Labyrinth client artifacts
+
+Optional, explicit CID-authenticated artifact transport: [integration contract](LABYRINTH.md).
+No exercise records are exported automatically.
