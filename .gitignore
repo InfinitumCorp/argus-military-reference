@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+data/geo/
+argus_settings.json
+argus_settings.json.tmp
